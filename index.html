@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,
+	initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="plotly.min.js"></script>
+	<title>JS CRASH COURSE</title>
+</head>
+
+<body>
+	<div class = "navbar"><span>3D Surface</span></div>
+	<div class = "wrapper">
+		<div id = "chart"></div>
+
+		<!--We want an array with filled with arrays of ten random values-->
+		<script>
+			function getData(mode = 1){
+				let arr = [];
+
+				for(let i = 0; i < 10; i++){
+					//arr.push(Array(10).fill().map(() => Math.random()));
+					//arr.push(Math.random());
+
+					arr.push(mode > 1 ? Math.random() : Array(10).fill().map(() => Math.random()));
+				}
+				return arr;
+			}
+
+			let range = [];
+			for(let i = 0; i < 10; i++){
+				range.push(i);
+			}
+
+			console.log(getData(1),range);
+
+			
+			Plotly.newPlot('chart', [{
+				z: getData(),
+				type: 'surface'
+			}]);
+			
+
+			/*
+			Plotly.newPlot('chart', [{
+				x: range,
+				y: range,
+				type: 'scatter'
+			}]);
+			*/
+		</script>
+	</div>
+</body>
+</html>	
